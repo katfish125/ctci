@@ -1,4 +1,6 @@
-// Implementation of singly linked list
+// Implementation of singly linked list.
+// I have yet to go through the "encapsulation" chapter of the textbook,
+// so the current implementation for Linked List and Node are not optimal.
 
 public class LinkedList {
     Node head;
