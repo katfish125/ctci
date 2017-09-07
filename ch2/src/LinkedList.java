@@ -3,24 +3,31 @@
 public class LinkedList {
     Node head;
 
+    public LinkedList() {}
+
     public LinkedList(int d) {
         head = new Node(d);
     }
 
     public void append(int d) {
-        Node newOne = new Node(d);
-        Node currOne = head;
-        while (currOne.next != null) {
-            currOne = currOne.next;
+        if (head == null) {
+            head = new Node(d);
         }
-        currOne.next = newOne;
+        else {
+            Node newOne = new Node(d);
+            Node currOne = head;
+            while (currOne.next != null) {
+                currOne = currOne.next;
+            }
+            currOne.next = newOne;
+        }
     }
 
     // this function removes the first occurrence of the value d
     public void remove(int d) {
         Node currOne = head;
         Node prev = null;
-        while (currOne.data != d && currOne != null) {
+        while (currOne != null && currOne.data != d) {
             prev = currOne;
             currOne = currOne.next;
         }
@@ -28,10 +35,18 @@ public class LinkedList {
             System.out.println("The value you requested to remove was not in the linked list.");
         }
         else if (prev == null) {
-            head = null;
+            head = currOne.next;
         }
         else {
             prev.next = currOne.next;
+        }
+    }
+
+    public void printAll() {
+        Node currOne = head;
+        while(currOne != null) {
+            System.out.println(currOne.data);
+            currOne = currOne.next;
         }
     }
 }
