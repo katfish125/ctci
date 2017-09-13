@@ -43,3 +43,10 @@ public class MyQueue<T> {
         return first == null;
     }
 }
+
+// for question 3.4:
+// whenever push, pop all items in main stack to temp stack, and push new item to main
+// then, pop items from temp and push back to main
+// when pop, simply pop main
+// edit after answer key:
+// too much work. keep pushing into temp until need to pop.
