@@ -8,7 +8,7 @@ public class SortStack {
         stack.push(3);
         stack.push(2);
         stack.push(5);
-        stack.push(0);
+        // stack.push(0);
 
         sortStack(stack);
 
@@ -24,10 +24,28 @@ public class SortStack {
         temp.push(stack.pop());
 
         int count = 1;
+        int currOne;
+        boolean pushed;
         while (!stack.empty()) {
+            pushed = false;
+            currOne = stack.pop();
             while (!temp.empty()) {
-                
+                if ((temp.peek() == null || temp.peek() < currOne)&&!pushed) {
+                    stack.push(currOne);
+                    pushed = true;
+                }
+                else {
+                    stack.push(temp.pop());
+                }
             }
+            if (!pushed) {stack.push(currOne);}
+            count++;
+            for (int i = 0; i < count; i++) {
+                temp.push(stack.pop());
+            }
+        }
+        while (!temp.empty()) {
+            stack.push(temp.pop());
         }
     }
 }
